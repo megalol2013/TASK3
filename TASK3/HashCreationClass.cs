@@ -19,10 +19,12 @@ namespace TASK3
 
         }
 
-        public static string HashCreation(byte[] hashKey)
+        public static string HashCreation(byte[] hashKey,string move)
         {
+            move = BitConverter.ToString(hashKey).Replace("-", "") + move;
+            byte[] hash = Encoding.ASCII.GetBytes(move);
             var hashAlgorithm = new Org.BouncyCastle.Crypto.Digests.Sha3Digest(256);
-            hashAlgorithm.BlockUpdate(hashKey, 0, hashKey.Length);
+            hashAlgorithm.BlockUpdate(hash, 0, hash.Length);
             byte[] result = new byte[32];
             hashAlgorithm.DoFinal(result, 0);
             string hashString = BitConverter.ToString(result);
