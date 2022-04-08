@@ -40,6 +40,7 @@ namespace TASK3
                 TableClass.DrawTable(args);
                 Console.Write("\nEnter your move:");
                 temp = Console.ReadLine();
+                if (temp == "0") return;
             }
 
             int humanMove = Int32.Parse(temp) - 1;
